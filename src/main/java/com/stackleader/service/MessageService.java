@@ -17,7 +17,9 @@ public class MessageService {
     private static ProducerTemplate directLogger;
 
     public static void sendMessageToTopic(String message) {
-        if (message.length() == 0) throw new IllegalArgumentException("Empty Message");
+        if (message.length() == 0) {
+            throw new IllegalArgumentException("Empty Message");
+        }
         LOG.info(message);
         directLogger.sendBody(message);
     }

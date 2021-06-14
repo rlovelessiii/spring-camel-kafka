@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>org.example</groupId>
-    <artifactId>Kaftka-Camel-Spring</artifactId>
+    <artifactId>kaftka-camel-spring</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencyManagement>
@@ -33,11 +33,6 @@
                 <groupId>org.apache.camel.springboot</groupId>
                 <artifactId>camel-kafka-starter</artifactId>
                 <version>3.10.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.kafka</groupId>
-                <artifactId>camel-kafka</artifactId>
-                <version>2.19</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

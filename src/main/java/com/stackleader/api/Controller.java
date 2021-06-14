@@ -1,6 +1,7 @@
 package com.stackleader.api;
 
 import com.stackleader.service.MessageService;
+import javax.ws.rs.BadRequestException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -20,15 +21,14 @@ public class Controller {
     @Path("/kafka/test")
     @Consumes(MediaType.TEXT_PLAIN)
     @POST
-    public Response postKafkaMessage (String message) {
+    public Response postKafkaMessage(String message) {
         try {
             LOG.info(message);
             MessageService.sendMessageToTopic(message);
             return Response.status(Response.Status.ACCEPTED).build();
-        }
-        catch (IllegalArgumentException | NullPointerException e) {
-            LOG.error(e.toString());
-            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (Throwable e) {
+//            return e.getResponse();
+            return Response.status(501).build();
         }
     }
 }
